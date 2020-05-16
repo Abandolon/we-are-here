@@ -4,9 +4,11 @@ import { PostService } from './services/PostService'
 import bodyParser from 'body-parser'
 import { PostRepository } from './db/PostRepository'
 import { banner } from './banner'
+import cors from 'cors'
 
 const app = express()
 
+app.use(cors())
 app.use(bodyParser.json())
 
 const postRepository = new PostRepository(process.env.DATABASE_URL)
