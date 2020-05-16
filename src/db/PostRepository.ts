@@ -11,7 +11,12 @@ export class PostRepository {
         console.log(`Using databaseUrl: ${databaseUrl}`)
         this.pool = new Pool({
             connectionString: databaseUrl,
-
+            // TODO Re-enable again. Check that is runs local.
+            /*
+            ssl: {
+                rejectUnauthorized: false
+            }
+            */
         });
     }
 
