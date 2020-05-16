@@ -1,0 +1,29 @@
+{
+  "name": "we-are-backend",
+  "version": "1.0.0",
+  "description": "Backend of the We Are Here application",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node --files src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Abandolon/we-are-here.git"
+  },
+  "author": "Stephan Tentrup",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abandolon/we-are-here/issues"
+  },
+  "homepage": "https://github.com/Abandolon/we-are-here#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ts-node": "^8.10.1",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "typescript": "^3.9.2"
+  }
+}

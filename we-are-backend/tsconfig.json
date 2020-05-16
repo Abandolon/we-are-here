@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "outDir": "./lib",
+        "allowJs": false,
+        "target": "es2017",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "strict": true,
+        "noUnusedParameters": true,
+        "noUnusedLocals": true,
+        "experimentalDecorators": true,
+        "jsx": "react",
+        "importHelpers": true,
+        "lib": [ "es2018", "dom" ]
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}
