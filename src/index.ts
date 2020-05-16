@@ -5,7 +5,7 @@ import bodyParser from 'body-parser'
 import { PostRepository } from './db/PostRepository'
 
 const app = express()
-const port = 80
+const port = process.env.PORT
 
 app.use(bodyParser.json())
 
