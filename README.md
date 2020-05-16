@@ -4,7 +4,9 @@
 ```
 npm install
 ```
+### Database
 
+This app uses PostgreSQL. Configure the connection via environment variable `$DATABASE_URL`.
 
 
 ### Start server
