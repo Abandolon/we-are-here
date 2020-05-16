@@ -3,6 +3,7 @@ import { PostEndpoints } from './api/PostEndpoints'
 import { PostService } from './services/PostService'
 import bodyParser from 'body-parser'
 import { PostRepository } from './db/PostRepository'
+import { banner } from './banner'
 
 const app = express()
 
@@ -16,4 +17,4 @@ app.post('/post', postEndpoints.createPost)
 app.get('/posts', postEndpoints.getPosts)
 
 const port = process.env.PORT || 3000
-app.listen(port, () => console.log(`We are here backend is listening at port ${ port }`))
+app.listen(port, () => console.log(`${banner}Backend is listening at port ${ port }`))
