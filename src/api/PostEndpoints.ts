@@ -11,14 +11,22 @@ export class PostEndpoints {
 
     public createPost = (req: Request, res: Response, _next: NextFunction) => {
         const data: Post = req.body
-        this.postService.createPost(data)
-        res.status(HttpStatus.CREATED).send()
+        try {
+            this.postService.createPost(data)
+            res.status(HttpStatus.CREATED).send()
+        } catch (err) {
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).send()
+        }
     }
 
-    public getPosts = (req: Request, res: Response, _next: NextFunction) => {
+    public getPosts = async (req: Request, res: Response, _next: NextFunction) => {
         console.log(`Request query: ${req.query}`)
         //const limit = parseInt(req.query., 10)
-        const posts = this.postService.getPosts()
-        res.json(posts)
+        try {
+            const posts = await this.postService.getPosts()
+            res.json(posts)
+        } catch (err) {
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).send()
+        }
     }
 }

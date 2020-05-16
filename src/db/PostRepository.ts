@@ -11,9 +11,7 @@ export class PostRepository {
         console.log(`Using databaseUrl: ${databaseUrl}`)
         this.pool = new Pool({
             connectionString: databaseUrl,
-            ssl: {
-                rejectUnauthorized: false
-            }
+
         });
     }
 
@@ -33,13 +31,13 @@ export class PostRepository {
         try {
             const result = await client.query('SELECT data FROM posts')
             if (result) {
-                return result.rows.map((value, _index, _) => {
-                    return JSON.parse(value.data) as Post
-                })
+                const posts = result.rows.map((value, _index, _) => value.data as Post)
+                return posts
+            } else {
+                return []
             }
         } finally {
             client.release()
         }
-        return []
     }
 }
