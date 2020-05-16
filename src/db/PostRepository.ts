@@ -8,6 +8,7 @@ export class PostRepository {
     private pool: Pool
 
     constructor(databaseUrl?: string) {
+        console.log(`Using databaseUrl: ${databaseUrl}`)
         this.pool = new Pool({
             connectionString: databaseUrl,
             ssl: {
