@@ -12,8 +12,8 @@ export class PostEndpoints {
     public createPost = (req: Request, res: Response, _next: NextFunction) => {
         const data: Post = req.body
         try {
-            this.postService.createPost(data)
-            res.status(HttpStatus.CREATED).send()
+            const id = this.postService.createPost(data)
+            res.status(HttpStatus.CREATED).json({id})
         } catch (err) {
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).send()
         }

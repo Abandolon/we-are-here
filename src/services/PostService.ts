@@ -16,6 +16,7 @@ export class PostService {
         post.id = uuidv4()
         post.timestamp = moment().utc().format(TIMESTAMP_FORMAT)
         this.repository.create(post)
+        return post.id
     }
 
     public getPosts(limit?: number) {
