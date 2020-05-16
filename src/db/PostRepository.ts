@@ -39,8 +39,7 @@ export class PostRepository {
             console.log(query)
             const result = await client.query(query)
             if (result) {
-                const posts = result.rows.map((value, _index, _) => value.data as Post)
-                return posts
+                return result.rows.map((value, _index, _) => value.data as Post)
             } else {
                 return []
             }
