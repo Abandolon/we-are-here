@@ -20,10 +20,9 @@ export class PostEndpoints {
     }
 
     public getPosts = async (req: Request, res: Response, _next: NextFunction) => {
-        console.log(`Request query: ${req.query}`)
-        //const limit = parseInt(req.query., 10)
+        const limit = parseInt(req.query.limit as string, 10)
         try {
-            const posts = await this.postService.getPosts()
+            const posts = await this.postService.getPosts(limit)
             res.json(posts)
         } catch (err) {
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).send()

@@ -20,8 +20,6 @@ export class PostRepository {
         });
     }
 
-
-
     public async create(post: Post) {
         const client = await this.pool.connect()
         try {
@@ -31,10 +29,15 @@ export class PostRepository {
         }
     }
 
-    public async get(_limit?: number): Promise<Post[]> {
+    public async get(limit?: number): Promise<Post[]> {
         const client = await this.pool.connect()
         try {
-            const result = await client.query('SELECT data FROM posts')
+            let query = 'SELECT data FROM posts ORDER BY data->>\'timestamp\' DESC'
+            if (limit) {
+                query += ' LIMIT ' + limit
+            }
+            console.log(query)
+            const result = await client.query(query)
             if (result) {
                 const posts = result.rows.map((value, _index, _) => value.data as Post)
                 return posts
