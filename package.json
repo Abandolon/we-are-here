@@ -35,8 +35,5 @@
     "tslib": "^2.0.0",
     "typescript": "^3.9.2",
     "uuid": "^8.0.0"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0"
   }
 }

@@ -28,11 +28,12 @@ app.use(cors({
 
 app.use(bodyParser.json())
 
-const postRepository = new PostRepository(process.env.DATABASE_URL)
+const postRepository = new PostRepository(process.env.DATABASE_URL || 'postgres://localhost')
 const postService = new PostService(postRepository)
 const postEndpoints = new PostEndpoints(postService)
 
 app.post('/post', postEndpoints.createPost)
+app.delete('/post/:id', postEndpoints.deletePost)
 app.get('/posts', postEndpoints.getPosts)
 
 const port = process.env.PORT || 3000

@@ -3,12 +3,12 @@ export interface Post {
     timestamp: string
     prompt: string
     message: string
-    location: Location
+    location?: Location
 }
 
 export interface Location {
-    latitude: number
-    longitude: number
-    city: string
-    country: string
+    latitude?: number
+    longitude?: number
+    city?: string
+    country?: string
 }

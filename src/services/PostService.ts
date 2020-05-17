@@ -12,15 +12,19 @@ export class PostService {
     ) {
     }
 
-    public createPost(post: Post) {
+    public async createPost(post: Post) {
         post.id = uuidv4()
         post.timestamp = moment().utc().format(TIMESTAMP_FORMAT)
-        this.repository.create(post)
+        await this.repository.create(post)
         return post.id
     }
 
     public getPosts(limit?: number) {
         const posts = this.repository.get(limit)
         return posts
+    }
+
+    public async deletePost(id: string) {
+        return await this.repository.delete(id)
     }
 }

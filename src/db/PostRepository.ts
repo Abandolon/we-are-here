@@ -33,16 +33,28 @@ export class PostRepository {
         const client = await this.pool.connect()
         try {
             let query = 'SELECT data FROM posts ORDER BY data->>\'timestamp\' DESC'
+            const values: any[] = []
             if (limit) {
-                query += ' LIMIT ' + limit
+                query += ' LIMIT $1'
+                values.push(limit)
             }
-            console.log(query)
-            const result = await client.query(query)
+            const result = await client.query(query, values)
             if (result) {
                 return result.rows.map((value, _index, _) => value.data as Post)
             } else {
                 return []
             }
+        } finally {
+            client.release()
+        }
+    }
+
+    public async delete(id: string): Promise<number> {
+        const client = await this.pool.connect()
+        try {
+            const query = `DELETE FROM posts WHERE data->>'id' = $1`
+            const result = await client.query(query, [id])
+            return result.rowCount
         } finally {
             client.release()
         }
